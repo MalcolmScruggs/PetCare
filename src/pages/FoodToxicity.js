@@ -2,11 +2,11 @@ import React from "react";
 import {observer} from "mobx-react";
 
 function FoodToxicity({ petStore }) {
-    const { pets } = petStore
+    const { pets, foods } = petStore
     return (
         <div>
             <h1>Food Toxicity</h1>{
-            pets.map((pet,idx) => <div>{pet.name}</div>)}
+            foods.map((food,idx) => <div>{food.name}&nbsp;&nbsp;{food.type}</div>)}
         </div>
     );
 

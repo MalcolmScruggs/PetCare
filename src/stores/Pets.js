@@ -1,12 +1,13 @@
 class Pets {
     pets = [
-        {name: "Rover", weight: 10},
+        {name: "Rover", weight: 10, type: "type_dog"},
     ];
 
-    addPet(name, weight) {
+    addPet(name, weight, type) {
         let newPet = {
             name,
-            weight
+            weight,
+            type
         };
         this.pets.push(newPet)
     }

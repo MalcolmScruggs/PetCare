@@ -8,7 +8,7 @@ function Home({ petStore }) {
     return (
     <div>
         <h1>Home</h1>
-        <Button onClick={() => petStore.addPet("test", 25)} color="primary">Add Pet</Button>{' '}
+        <Button onClick={() => petStore.addPet("test", 25, "type_dog")} color="primary">Add Pet</Button>{' '}
         {pets.map((pet,idx) => <PetView pet={pet} key={idx} />)}
     </div>
 )};
@@ -17,8 +17,7 @@ function PetView(props) {
     const {pet} = props;
     return(
         <div>
-            {pet.name}
-            {pet.weight}
+            {pet.name} {pet.weight} {pet.type}<br />
         </div>
     );
 }

@@ -5,6 +5,7 @@ import FoodToxicity from "./pages/FoodToxicity";
 import VetRecords from "./pages/VetRecords";
 import Home from "./pages/Home";
 import PetStore from "./stores/Pets"
+import FoodStore from "./stores/Foods"
 import {action, decorate, observable} from "mobx";
 
 decorate(PetStore, {
@@ -12,6 +13,11 @@ decorate(PetStore, {
     addPet: action,
 });
 const petStore = new PetStore();
+decorate(FoodStore, {
+    foods: observable,
+    addFood: action,
+});
+const foodStore = new FoodStore();
 
 class App extends Component {
     render() {
@@ -36,7 +42,7 @@ class App extends Component {
             renders the first one that matches the current URL. */}
                     <Switch>
                         <Route path="/food_toxicity">
-                            <FoodToxicity petStore={petStore}/>
+                            <FoodToxicity petStore={petStore, foodStore}/>
                         </Route>
                         <Route path="/vet_records">
                             <VetRecords petStore={petStore}/>

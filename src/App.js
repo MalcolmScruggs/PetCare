@@ -42,7 +42,7 @@ class App extends Component {
             renders the first one that matches the current URL. */}
                     <Switch>
                         <Route path="/food_toxicity">
-                            <FoodToxicity petStore={petStore, foodStore}/>
+                            <FoodToxicity petStore={petStore} foodStore={foodStore}/>
                         </Route>
                         <Route path="/vet_records">
                             <VetRecords petStore={petStore}/>

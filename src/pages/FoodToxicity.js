@@ -1,8 +1,9 @@
 import React from "react";
 import {observer} from "mobx-react";
 
-function FoodToxicity({ petStore }) {
-    const { pets, foods } = petStore
+function FoodToxicity({ petStore, foodStore }) {
+    const { pets } = petStore
+    const { foods} = foodStore
     return (
         <div>
             <h1>Food Toxicity</h1>{

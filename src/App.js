@@ -7,13 +7,21 @@ import FoodToxicity from "./pages/FoodToxicity";
 import VetRecords from "./pages/VetRecords";
 import Home from "./pages/Home";
 import PetStore from "./stores/Pets"
+import EventsStore from "./stores/Events"
 import Navigation from "./Navigation";
+import CalendarPage from "./pages/Calendar/CalendarPage";
 
 decorate(PetStore, {
     pets: observable,
     addPet: action,
 });
 const petStore = new PetStore();
+
+decorate(EventsStore, {
+    events: observable,
+    addEvent: action,
+});
+const eventStore = new EventsStore();
 
 class App extends Component {
     render() {
@@ -29,6 +37,9 @@ class App extends Component {
                                 </Route>
                                 <Route path="/vet_records">
                                     <VetRecords petStore={petStore}/>
+                                </Route>
+                                <Route path="/calendar">
+                                    <CalendarPage petStore={petStore} eventStore={eventStore}/>
                                 </Route>
                                 <Route path="/">
                                     <Home petStore={petStore}/>

@@ -19,7 +19,7 @@ const AddEventModal = (props) => {
         <div>
             <Button size="lg" color="primary" onClick={toggle}>{buttonLabel}</Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
-                <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+                <ModalHeader toggle={toggle}>Add Event</ModalHeader>
                 <ModalBody>
                     <AddEventForm eventStore={eventStore} petStore={petStore} onSubmitCallback={() => {toggle(); submitCallback()}} />
                 </ModalBody>

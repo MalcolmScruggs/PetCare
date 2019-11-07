@@ -17,7 +17,7 @@ const AddPetModal = (props) => {
         <div>
             <Button color="primary" onClick={toggle}>{buttonLabel}</Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
-                <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+                <ModalHeader toggle={toggle}>Add Pet</ModalHeader>
                 <ModalBody>
                     <AddPetForm petStore={petStore} onSubmitCallback={toggle} />
                 </ModalBody>

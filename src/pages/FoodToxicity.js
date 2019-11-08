@@ -1,16 +1,5 @@
-import React, { Component } from "react";
-import {
-    Card,
-    CardBody,
-    CardSubtitle,
-    CardTitle,
-    Col,
-    Form,
-    FormGroup,
-    FormFeedback,
-    Label,
-    Input,
-} from 'reactstrap';
+import React, {Component} from "react";
+import {Card, CardBody, CardSubtitle, CardTitle, Col, FormFeedback, FormGroup, Input, Label,} from 'reactstrap';
 import {observer} from "mobx-react";
 
 class FoodToxicity extends Component {
@@ -55,61 +44,62 @@ class FoodToxicity extends Component {
     render() {
         let checkFood;
         if (this.state.selected_food === '') {
-            checkFood = 
-            <FormGroup>
-                <Label for="selectedFood">Food:</Label>
-                <Input type="text" name="selectedFood" id="selectedFood" placeholder="Search food" required 
-                    onChange={this.checkToxicity}>
-                </Input>
-            </FormGroup>;
+            checkFood =
+                <FormGroup>
+                    <Label for="selectedFood">Food:</Label>
+                    <Input type="text" name="selectedFood" id="selectedFood" placeholder="Search food" required
+                           onChange={this.checkToxicity}>
+                    </Input>
+                </FormGroup>;
         } else {
             console.log(this.state.selected_food);
             console.log(this.state.current_foods.indexOf(this.state.selected_food) >= 0);
             if (this.state.current_foods.indexOf(this.state.selected_food) >= 0) {
-                checkFood = 
-                <FormGroup>
-                                <Label for="selectedFood">Food:</Label>
-                                <Input invalid type="text" name="selectedFood" id="selectedFood" placeholder="Search food" required 
-                                    onChange={this.checkToxicity}>
-                                </Input>
-                                <FormFeedback>Toxic</FormFeedback>
-                </FormGroup>;
+                checkFood =
+                    <FormGroup>
+                        <Label for="selectedFood">Food:</Label>
+                        <Input invalid type="text" name="selectedFood" id="selectedFood" placeholder="Search food"
+                               required
+                               onChange={this.checkToxicity}>
+                        </Input>
+                        <FormFeedback>Toxic</FormFeedback>
+                    </FormGroup>;
             } else {
-                checkFood = 
-                <FormGroup>
-                                <Label for="selectedFood">Food:</Label>
-                                <Input valid type="text" name="selectedFood" id="selectedFood" placeholder="Search food" required 
-                                    onChange={this.checkToxicity}>
-                                </Input>
-                                <FormFeedback valid>Safe</FormFeedback>
-                </FormGroup>;
+                checkFood =
+                    <FormGroup>
+                        <Label for="selectedFood">Food:</Label>
+                        <Input valid type="text" name="selectedFood" id="selectedFood" placeholder="Search food"
+                               required
+                               onChange={this.checkToxicity}>
+                        </Input>
+                        <FormFeedback valid>Safe</FormFeedback>
+                    </FormGroup>;
             }
         }
         return (
             <div className="container">
                 <Col md="12" lg="6" className="my-3">
-                <Card>
-                    <CardBody>
-                        <CardTitle className="h3 font-weight-bolder">Food Toxicity</CardTitle>
-                        <CardSubtitle>Lookup toxicity for specific foods before feeding your pet!</CardSubtitle>
-                    </CardBody>
-                </Card>
-                <Card>
-                    <CardBody>
-                        <Form>
-                            <FormGroup>
-                                <Label for="petTypeFood">Pet Type:</Label>
-                                <Input type="select" name="petTypeFood" id="petTypeFood" onChange={this.selectAnimalType}>
+                    <Card>
+                        <CardBody>
+                            <CardTitle className="h3 font-weight-bolder">Food Toxicity</CardTitle>
+                            <CardSubtitle>Lookup toxicity for specific foods before feeding your pet!</CardSubtitle>
+                        </CardBody>
+                    </Card>
+                    <Card>
+                        <CardBody>
+                                <FormGroup>
+                                    <Label for="petTypeFood">Pet Type:</Label>
+                                    <Input type="select" name="petTypeFood" id="petTypeFood"
+                                           onChange={this.selectAnimalType}>
                                         <option>Dog</option>
                                         <option>Cat</option>
-                                </Input>
-                            </FormGroup>
-                            {checkFood}
-                        </Form>
-                    </CardBody>
-                </Card>
+                                    </Input>
+                                </FormGroup>
+                                {checkFood}
+                        </CardBody>
+                    </Card>
 
-            </Col>
+                </Col>
             </div>
         );
     }

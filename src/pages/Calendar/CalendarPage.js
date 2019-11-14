@@ -14,7 +14,7 @@ class CalendarPage extends Component {
         const { eventStore, petStore } = this.props;
         const { events } = eventStore;
         return (
-            <div className="container">
+            <div className="container mt-3">
                 <div className="mb-2">
                     <AddEventModal buttonLabel="Add Event" petStore={petStore} eventStore={eventStore} submitCallback={() => this.forceUpdate()} />
                 </div>

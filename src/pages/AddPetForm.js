@@ -35,13 +35,13 @@ class AddPetForm extends Component {
         return (
             <Form onSubmit={this.onFormSubmit}>
                 <FormGroup>
-                    <Label for="name">Pet Name</Label>
-                    <Input type="text" name="name" id="name" placeholder="pet name" required
+                    <Label for="name">Name</Label>
+                    <Input type="text" name="name" id="name" placeholder="Rover" required
                            onChange={e => this.setState({ name: e.target.value })} />
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="petType">Pet Type</Label>
+                    <Label for="petType">Type</Label>
                     <Input type="select" name="petType" id="petType" onChange={
                         e => this.setState({ type: e.target.value })}>
                         <option>Dog</option>
@@ -52,37 +52,37 @@ class AddPetForm extends Component {
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="petBreed">Pet Breed</Label>
-                    <Input type="text" name="petBreed" id="petBreed" placeholder="Breed" required
+                    <Label for="petBreed">Breed</Label>
+                    <Input type="text" name="petBreed" id="petBreed" placeholder="German Sheppard" required
                            onChange={e => this.setState({ breed: e.target.value })} />
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="petWeight">Pet Weight</Label>
+                    <Label for="petWeight">Weight</Label>
                     <Input type="number" name="petWeight" id="petWeight" placeholder="0" step=".01"
                            onChange={e => this.setState({ weight: e.target.value })} />
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="petAge">Pet Age</Label>
+                    <Label for="petAge">Age</Label>
                     <Input type="number" name="petAge" id="petAge" placeholder="0"
                            onChange={e => this.setState({ age: e.target.value })} />
                 </FormGroup>
 
                 <FormGroup>
                     <Label for="petNotes">Notes</Label>
-                    <Input type="textarea" name="petNotes" id="petNotes" placeholder="Pet Notes"
+                    <Input type="textarea" name="petNotes" id="petNotes" placeholder="Best Pupper"
                            onChange={e => this.setState({ notes: e.target.value })} />
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="petImg">Pet Avatar</Label>
+                    <Label for="petImg">Avatar</Label>
                     <Input type="url" name="petImg" id="petImg" placeholder="https://rover.com/avatar.jpg"
                            onChange={e => this.setState({ img: e.target.value })} />
                     <FormText>This must be a URL to a pet image (upload not implemented for Prototype)</FormText>
                 </FormGroup>
 
-                <Button type="submit" color="primary">Submit</Button>
+                <Button type="submit" color="primary">Add your Furry Friend</Button>
             </Form>
         )
     }

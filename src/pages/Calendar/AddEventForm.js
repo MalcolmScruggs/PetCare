@@ -36,27 +36,27 @@ class AddEventForm extends Component {
         return (
             <Form onSubmit={this.onFormSubmit}>
                 <FormGroup>
-                    <Label for="name">Pet Name</Label>
-                    <Input type="text" name="name" id="name" placeholder="Event Title" required
+                    <Label for="name">Title</Label>
+                    <Input type="text" name="name" id="name" placeholder="Walk Rover" required
                            onChange={e => this.setState({ title: e.target.value })} />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="exampleDate">Start Date</Label>
+                    <Label for="startDate">Start Date</Label>
                     <Input
                         type="date"
                         name="date"
-                        id="exampleDate"
+                        id="startDate"
                         placeholder="date placeholder"
                         required
                         onChange={e => this.setState({ startDate: e.target.value })}
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="exampleTime">Start Time</Label>
+                    <Label for="startTime">Start Time</Label>
                     <Input
                         type="time"
                         name="time"
-                        id="exampleTime"
+                        id="startTime"
                         placeholder="time placeholder"
                         required
                         onChange={e => this.setState({ startTime: e.target.value })}
@@ -74,19 +74,19 @@ class AddEventForm extends Component {
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="exampleTime">End Time</Label>
+                    <Label for="endTime">End Time</Label>
                     <Input
                         type="time"
                         name="time"
-                        id="exampleTime"
+                        id="endTime"
                         placeholder="time placeholder"
                         required
                         onChange={e => this.setState({ endTime: e.target.value })}
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="exampleSelect">Select</Label>
-                    <Input type="select" name="select" id="exampleSelect">
+                    <Label for="petSelect">Pet</Label>
+                    <Input type="select" name="select" id="petSelect">
                         {pets.map(pet => <option>{pet.name}</option>)}
                     </Input>
                 </FormGroup>

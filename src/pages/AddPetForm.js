@@ -58,7 +58,7 @@ class AddPetForm extends Component {
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="petWeight">Weight</Label>
+                    <Label for="petWeight">Weight <span className="text-secondary font-weight-light">(lbs)</span></Label>
                     <Input type="number" name="petWeight" id="petWeight" placeholder="0" step=".01"
                            onChange={e => this.setState({ weight: e.target.value })} />
                 </FormGroup>

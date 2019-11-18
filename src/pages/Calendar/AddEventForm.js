@@ -17,6 +17,23 @@ class AddEventForm extends Component {
         }
     }
 
+    setStartDate = (e) => {
+        const startDate = e.target.value;
+
+        if (this.state.endDate === '') {
+            this.setState({endDate: startDate})
+        }
+    };
+
+    setStartTime = (e) => {
+        const startTime = e.target.value;
+        const newState = {startTime};
+        if(!this.state.endTime) {
+            newState.endTime = startTime
+        }
+        this.setState({...newState});
+    };
+
     onFormSubmit = (e) => {
         e.preventDefault();
         const { eventStore, onSubmitCallback } = this.props;
@@ -36,30 +53,30 @@ class AddEventForm extends Component {
         return (
             <Form onSubmit={this.onFormSubmit}>
                 <FormGroup>
-                    <Label for="name">Pet Name</Label>
-                    <Input type="text" name="name" id="name" placeholder="Event Title" required
+                    <Label for="name">Title</Label>
+                    <Input type="text" name="name" id="name" placeholder="Walk Rover" required
                            onChange={e => this.setState({ title: e.target.value })} />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="exampleDate">Start Date</Label>
+                    <Label for="startDate">Start Date</Label>
                     <Input
                         type="date"
                         name="date"
-                        id="exampleDate"
+                        id="startDate"
                         placeholder="date placeholder"
                         required
-                        onChange={e => this.setState({ startDate: e.target.value })}
+                        onChange={this.setStartDate}
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="exampleTime">Start Time</Label>
+                    <Label for="startTime">Start Time</Label>
                     <Input
                         type="time"
                         name="time"
-                        id="exampleTime"
+                        id="startTime"
                         placeholder="time placeholder"
                         required
-                        onChange={e => this.setState({ startTime: e.target.value })}
+                        onChange={this.setStartTime}
                     />
                 </FormGroup>
                 <FormGroup>
@@ -70,24 +87,26 @@ class AddEventForm extends Component {
                         id="exampleDate"
                         placeholder="date placeholder"
                         required
+                        value={this.state.endDate}
                         onChange={e => this.setState({ endDate: e.target.value })}
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="exampleTime">End Time</Label>
+                    <Label for="endTime">End Time</Label>
                     <Input
                         type="time"
                         name="time"
-                        id="exampleTime"
+                        id="endTime"
                         placeholder="time placeholder"
                         required
+                        value={this.state.endTime}
                         onChange={e => this.setState({ endTime: e.target.value })}
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="exampleSelect">Select</Label>
-                    <Input type="select" name="select" id="exampleSelect">
-                        {pets.map(pet => <option>{pet.name}</option>)}
+                    <Label for="petSelect">Pet</Label>
+                    <Input type="select" name="select" id="petSelect">
+                        {pets.map(pet => <option key={pet.name}>{pet.name}</option>)}
                     </Input>
                 </FormGroup>
                 <Button type="submit" color="primary">Submit</Button>

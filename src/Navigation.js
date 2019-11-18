@@ -18,9 +18,6 @@ const Example = () => {
                             <NavLink tag={RRNavLink} exact to="/food_toxicity" activeClassName="active">Food Toxicity</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink tag={RRNavLink} exact to="/vet_records" activeClassName="active">Vet Records</NavLink>
-                        </NavItem>
-                        <NavItem>
                             <NavLink tag={RRNavLink} exact to="/calendar" activeClassName="active">Calendar</NavLink>
                         </NavItem>
                     </Nav>

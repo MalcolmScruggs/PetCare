@@ -76,7 +76,7 @@ class AddPetForm extends Component {
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="petImg">Avatar</Label>
+                    <Label for="petImg">Photo</Label>
                     <Input type="url" name="petImg" id="petImg" placeholder="https://rover.com/avatar.jpg"
                            onChange={e => this.setState({ img: e.target.value })} />
                     <FormText>This must be a URL to a pet image (upload not implemented for Prototype)</FormText>

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Card, CardBody, CardSubtitle, CardTitle, Col, FormFeedback, FormGroup, Input, Label,} from 'reactstrap';
+import {Card, CardBody, CardSubtitle, CardTitle, Col, FormGroup, Input, Label, Button} from 'reactstrap';
 import {observer} from "mobx-react";
 
 class FoodToxicity extends Component {
@@ -10,7 +10,8 @@ class FoodToxicity extends Component {
         const {foods} = foodStore;
         this.state = {
             selected_type: 'dog',
-            current_foods: (foods.filter(food => food.type === 'dog')).map(food => food.name),
+            current_toxic_foods: (foods.filter(food => food.type === 'dog')).map(food => food.name),
+            safe_foods: (foods.filter(food => food.type === 'all')).map(food => food.name),
             selected_food: '',
         }
     }
@@ -19,63 +20,27 @@ class FoodToxicity extends Component {
         e.preventDefault();
         const {foodStore} = this.props;
         const {foods} = foodStore;
-        let food;
-        let foodList = [];
-        for (food of foods) {
-            // console.log(food.name+"|"+food.type);
-            if (food.type === this.state.selected_type.toLowerCase()) {
-                foodList.push(food.name);
-            }
-        }
+        let cur_toxic = (foods.filter(food => food.type === e.target.value.toLowerCase())).map(food => food.name);
         this.setState({
             selected_type: e.target.value.toLowerCase(),
-            current_foods: foodList,
+            current_toxic_foods: cur_toxic,
+            safe_foods: (foods.filter(food => food.type === 'all')).map(food => food.name).filter(food => !cur_toxic.includes(food)),
         });
-        console.log("State: ", this.state);
     };
 
-    checkToxicity = (e) => {
+    updateFood = (e) => {
         e.preventDefault();
         this.setState({
             selected_food: e.target.value.toLowerCase(),
-        })
+        });
+    }
+
+    checkToxicity = (e) => {
+        e.preventDefault();
+        console.log("State: ", this.state);
     }
 
     render() {
-        let checkFood;
-        if (this.state.selected_food === '') {
-            checkFood =
-                <FormGroup>
-                    <Label for="selectedFood">Food:</Label>
-                    <Input type="text" name="selectedFood" id="selectedFood" placeholder="Search food" required
-                           onChange={this.checkToxicity}>
-                    </Input>
-                </FormGroup>;
-        } else {
-            console.log(this.state.selected_food);
-            console.log(this.state.current_foods.indexOf(this.state.selected_food) >= 0);
-            if (this.state.current_foods.indexOf(this.state.selected_food) >= 0) {
-                checkFood =
-                    <FormGroup>
-                        <Label for="selectedFood">Food:</Label>
-                        <Input invalid type="text" name="selectedFood" id="selectedFood" placeholder="Search food"
-                               required
-                               onChange={this.checkToxicity}>
-                        </Input>
-                        <FormFeedback>Toxic</FormFeedback>
-                    </FormGroup>;
-            } else {
-                checkFood =
-                    <FormGroup>
-                        <Label for="selectedFood">Food:</Label>
-                        <Input valid type="text" name="selectedFood" id="selectedFood" placeholder="Search food"
-                               required
-                               onChange={this.checkToxicity}>
-                        </Input>
-                        <FormFeedback valid>Safe</FormFeedback>
-                    </FormGroup>;
-            }
-        }
         return (
             <div className="container">
                 <Col md="12" lg="6" className="my-3">
@@ -95,7 +60,13 @@ class FoodToxicity extends Component {
                                         <option>Cat</option>
                                     </Input>
                                 </FormGroup>
-                                {checkFood}
+                                <FormGroup>
+                                    <Label for="selectedFood">Food:</Label>
+                                    <Input type="text" name="selectedFood" id="selectedFood" placeholder="Search food" required
+                                           onChange={this.updateFood}>
+                                    </Input>
+                                </FormGroup>
+                                <Button onClick={this.checkToxicity}>Check now!</Button>
                         </CardBody>
                     </Card>
 

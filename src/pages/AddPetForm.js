@@ -50,7 +50,7 @@ class AddPetForm extends Component {
         return (
             <Form onSubmit={this.onFormSubmit}>
                 <FormGroup>
-                    <Label for="name">Name</Label>
+                    <Label for="name">Name<span className="text-danger"> *</span></Label>
                     <Input type="text" name="name" id="name" placeholder="Rover" required
                            value={this.state.name}
                            onChange={e => this.setState({name: e.target.value})}/>
@@ -68,7 +68,7 @@ class AddPetForm extends Component {
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="petBreed">Breed</Label>
+                    <Label for="petBreed">Breed<span className="text-danger"> *</span></Label>
                     <Input type="text" name="petBreed" id="petBreed" placeholder="German Sheppard" required
                            value={this.state.breed}
                            onChange={e => this.setState({breed: e.target.value})}/>

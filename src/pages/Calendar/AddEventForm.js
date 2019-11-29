@@ -19,6 +19,7 @@ class AddEventForm extends Component {
 
     setStartDate = (e) => {
         const startDate = e.target.value;
+        this.setState({startDate});
 
         if (this.state.endDate === '') {
             this.setState({endDate: startDate})

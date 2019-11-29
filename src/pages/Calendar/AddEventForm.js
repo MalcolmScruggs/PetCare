@@ -19,6 +19,7 @@ class AddEventForm extends Component {
 
     setStartDate = (e) => {
         const startDate = e.target.value;
+        this.setState({startDate});
 
         if (this.state.endDate === '') {
             this.setState({endDate: startDate})
@@ -53,12 +54,12 @@ class AddEventForm extends Component {
         return (
             <Form onSubmit={this.onFormSubmit}>
                 <FormGroup>
-                    <Label for="name">Title</Label>
+                    <Label for="name">Title<span className="text-danger"> *</span></Label>
                     <Input type="text" name="name" id="name" placeholder="Walk Rover" required
                            onChange={e => this.setState({ title: e.target.value })} />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="startDate">Start Date</Label>
+                    <Label for="startDate">Start Date<span className="text-danger"> *</span></Label>
                     <Input
                         type="date"
                         name="date"
@@ -69,7 +70,7 @@ class AddEventForm extends Component {
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="startTime">Start Time</Label>
+                    <Label for="startTime">Start Time<span className="text-danger"> *</span></Label>
                     <Input
                         type="time"
                         name="time"
@@ -80,7 +81,7 @@ class AddEventForm extends Component {
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="exampleDate">End Date</Label>
+                    <Label for="exampleDate">End Date<span className="text-danger"> *</span></Label>
                     <Input
                         type="date"
                         name="date"
@@ -92,7 +93,7 @@ class AddEventForm extends Component {
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="endTime">End Time</Label>
+                    <Label for="endTime">End Time<span className="text-danger"> *</span></Label>
                     <Input
                         type="time"
                         name="time"

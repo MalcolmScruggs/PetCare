@@ -5,8 +5,11 @@ import AddPetForm from "./AddPetForm";
 const AddPetModal = (props) => {
     const {
         buttonLabel,
+        buttonColor,
         className,
+        modalHeader,
         petStore,
+        petToEdit
     } = props;
 
     const [modal, setModal] = useState(false);
@@ -15,11 +18,11 @@ const AddPetModal = (props) => {
 
     return (
         <div>
-            <Button color="primary" onClick={toggle}>{buttonLabel}</Button>
+            <Button color={buttonColor || "primary"} onClick={toggle}>{buttonLabel}</Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
-                <ModalHeader toggle={toggle}>Add Pet</ModalHeader>
+                <ModalHeader toggle={toggle}>{modalHeader}</ModalHeader>
                 <ModalBody>
-                    <AddPetForm petStore={petStore} onSubmitCallback={toggle} />
+                    <AddPetForm petStore={petStore} onSubmitCallback={toggle} petToEdit={petToEdit}/>
                 </ModalBody>
             </Modal>
         </div>

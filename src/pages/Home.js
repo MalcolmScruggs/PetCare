@@ -16,16 +16,16 @@ function Home({ petStore }) {
     return (
     <div className="container">
         <h1 className="">Your Pets</h1>
-        <AddPetModal buttonLabel="Add Pet" petStore={petStore} />
+        <AddPetModal buttonLabel="Add Pet" petStore={petStore} modalHeader="Add Pet" />
         <div className="mt-3 row">
-            {pets.map((pet) => <PetView pet={pet} key={pet.id} />)}
+            {pets.map((pet) => <PetView pet={pet} key={pet.id} petStore={petStore} />)}
         </div>
     </div>
     )
 }
 
 function PetView(props) {
-    const {pet} = props;
+    const {pet, petStore} = props;
     const {name, breed, weight, age, notes, img} = pet;
     return(
         <Col md="12" lg="6" className="my-3">
@@ -38,6 +38,13 @@ function PetView(props) {
                     <div><u>Breed:</u> {breed}</div>
                     <div><u>Age:</u> {age}</div>
                     <div><u>Weight:</u> {weight}lbs</div>
+                    <AddPetModal
+                        buttonLabel="Edit"
+                        buttonColor="secondary"
+                        petStore={petStore}
+                        petToEdit={pet}
+                        modalHeader="Edit Pet"
+                    />
                 </CardBody>
             </Card>
         </Col>

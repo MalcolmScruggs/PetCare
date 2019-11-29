@@ -16,6 +16,14 @@ class Pets {
         this.pets.push(pet)
     }
 
+    editPet(pet) {
+        for(let i = 0; i < this.pets.length; i++) {
+            if (pet.id === this.pets[i].id) {
+                this.pets[i] = pet
+            }
+        }
+    }
+
 }
 
 export default Pets;

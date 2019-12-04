@@ -8,7 +8,7 @@ class Pets {
             weight: 10,
             age: 5,
             notes: "Partially blind in the left eye",
-            img: "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/03/12192604/Black-Lab-Face.jpg"
+            img: "https://www.doggoneproblems.com/wp-content/uploads/2017/07/Wilson-Black-Lab.jpg"
         },
     ];
 
